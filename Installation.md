@@ -70,6 +70,6 @@ Press ctrl+C            #this will quit the server
 $ C:\Users\mysql\bin>exit               # exit the 1st command promt/cmd
 ______________________________________________________________________________________
 
-Note: How to start our mysql server read the README file
+Note: How to start our mysql server read the README.md file
 
 Thank You
