@@ -1,0 +1,168 @@
+Microsoft Windows [Version 10.0.19044.1503]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Shivm>cd mysql/bin
+
+C:\Users\Shivm\mysql\bin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+__________________________________________________________________________________
+mysql> help contents
+You asked for help about help category: "Contents"
+For more information, type 'help <item>', where <item> is one of the following
+categories:
+   Account Management
+   Administration
+   Components
+   Compound Statements
+   Contents
+   Data Definition
+   Data Manipulation
+   Data Types
+   Functions
+   Geographic Features
+   Help Metadata
+   Language Structure
+   Loadable Functions
+   Plugins
+   Prepared Statements
+   Replication Statements
+   Storage Engines
+   Table Maintenance
+   Transactions
+   Utility
+_______________________________________________________________________________
+mysql> help data manipulation
+You asked for help about help category: "Data Manipulation"
+For more information, type 'help <item>', where <item> is one of the following
+topics:
+   CALL
+   DELETE
+   DO
+   DUAL
+   HANDLER
+   IMPORT TABLE
+   INSERT
+   INSERT DELAYED
+   INSERT SELECT
+   JOIN
+   LOAD DATA
+   LOAD XML
+   PARENTHESIZED QUERY EXPRESSIONS
+   REPLACE
+   SELECT
+   TABLE
+   UNION
+   UPDATE
+   VALUES STATEMENT
+____________________________________________________________________________________
+mysql> help data definition
+You asked for help about help category: "Data Definition"
+For more information, type 'help <item>', where <item> is one of the following
+topics:
+   ALTER DATABASE
+   ALTER EVENT
+   ALTER FUNCTION
+   ALTER INSTANCE
+   ALTER LOGFILE GROUP
+   ALTER PROCEDURE
+   ALTER SCHEMA
+   ALTER SERVER
+   ALTER TABLE
+   ALTER TABLESPACE
+   ALTER VIEW
+   CREATE DATABASE
+   CREATE EVENT
+   CREATE FUNCTION
+   CREATE INDEX
+   CREATE LOGFILE GROUP
+   CREATE PROCEDURE
+   CREATE SCHEMA
+   CREATE SERVER
+   CREATE SPATIAL REFERENCE SYSTEM
+   CREATE TABLE
+   CREATE TABLESPACE
+   CREATE TRIGGER
+   CREATE VIEW
+   DROP DATABASE
+   DROP EVENT
+   DROP FUNCTION
+   DROP INDEX
+   DROP PROCEDURE
+   DROP SCHEMA
+   DROP SERVER
+   DROP SPATIAL REFERENCE SYSTEM
+   DROP TABLE
+   DROP TABLESPACE
+   DROP TRIGGER
+   DROP VIEW
+   FOREIGN KEY
+   RENAME TABLE
+   TRUNCATE TABLE
+_________________________________________________________________________________
+mysql> help data types
+You asked for help about help category: "Data Types"
+For more information, type 'help <item>', where <item> is one of the following
+topics:
+   AUTO_INCREMENT
+   BIGINT
+   BINARY
+   BIT
+   BLOB
+   BLOB DATA TYPE
+   BOOLEAN
+   CHAR
+   CHAR BYTE
+   DATE
+   DATETIME
+   DEC
+   DECIMAL
+   DOUBLE
+   DOUBLE PRECISION
+   ENUM
+   FLOAT
+   INT
+   INTEGER
+   LONGBLOB
+   LONGTEXT
+   MEDIUMBLOB
+   MEDIUMINT
+   MEDIUMTEXT
+   SET DATA TYPE
+   SMALLINT
+   TEXT
+   TIME
+   TIMESTAMP
+   TINYBLOB
+   TINYINT
+   TINYTEXT
+   VARBINARY
+   VARCHAR
+   YEAR DATA TYPE
+_____________________________________________________________________________
+mysql> help int
+Name: 'INT'
+Description:
+INT[(M)] [UNSIGNED] [ZEROFILL]
+
+A normal-size integer. The signed range is -2147483648 to 2147483647.
+The unsigned range is 0 to 4294967295.
+
+URL: https://dev.mysql.com/doc/refman/8.0/en/numeric-type-syntax.html
+
+
+mysql>
+
+
+
+
