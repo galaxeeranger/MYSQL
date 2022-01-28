@@ -1,0 +1,114 @@
+Theory :- SELECT
+
+The SELECT statement is used to select data from a database and retrive the information.
+
+1.Select all columns from the table
+
+Syntax :- SELECT * from table_name;
+Ex :- SELECT * from student;
+
+2.Select Particular columns from the table
+Syntax :- SELECT column_name1, column_name2,.. from table_name;
+Ex :- SELECT name,pin from student;
+
+------------------------------------------------------------------------------------------
+mysql> select * from student;
++--------+-------+---------+--------+
+| stu_id | name  | city    | pin    |
++--------+-------+---------+--------+
+|      1 | Raj   | Ranchi  | 123456 |
+|      2 | Rohan | Delhi   | 623456 |
+|      3 | Anuj  | Ranchi  | 635421 |
+|      4 | Raj   | NULL    | 625314 |
+|      5 | Shiv  | Lucknow | 100100 |
+|      6 | Dev   | Kolkata | 756324 |
++--------+-------+---------+--------+
+6 rows in set (0.00 sec)
+______________________________________________________
+mysql> select name,pin from student;
++-------+--------+
+| name  | pin    |
++-------+--------+
+| Raj   | 123456 |
+| Rohan | 623456 |
+| Anuj  | 635421 |
+| Raj   | 625314 |
+| Shiv  | 100100 |
+| Dev   | 756324 |
++-------+--------+
+6 rows in set (0.00 sec)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Theory :- SELECT with LIMIT
+
+SELECT LIMIT is used to specify some number of records to display.
+
+Syntax :- SELECT column_name1, column_name2
+	  FROM table_name
+	  LIMIT records_number;
+
+Ex :- SELECT stu_id, name
+	FROM student
+	LIMIT 3;
+
+-------------------------------------------------------------------------------------
+
+mysql> select * from student;
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      1 | Raj           | Ranchi  | 123456 |
+|      2 | Rohan         | Delhi   | 623456 |
+|      3 | Anuj          | Ranchi  | 635421 |
+|      4 | Raj           | NULL    | 625314 |
+|      5 | Shiv          | Lucknow | 100100 |
+|      6 | Dev           | Kolkata | 756324 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      9 | K.K's Company | Mumbai  | 110114 |
++--------+---------------+---------+--------+
+9 rows in set (0.00 sec)
+________________________________________________________
+mysql> select * from student limit 3;
++--------+-------+--------+--------+
+| stu_id | name  | city   | pin    |
++--------+-------+--------+--------+
+|      1 | Raj   | Ranchi | 123456 |
+|      2 | Rohan | Delhi  | 623456 |
+|      3 | Anuj  | Ranchi | 635421 |
++--------+-------+--------+--------+
+3 rows in set (0.00 sec)
+________________________________________________________
+mysql> select stu_id,name from student limit 3;
++--------+-------+
+| stu_id | name  |
++--------+-------+
+|      1 | Raj   |
+|      2 | Rohan |
+|      3 | Anuj  |
++--------+-------+
+3 rows in set (0.00 sec)
+_____________________________________________________
+mysql> select * from student limit 1,5;
++--------+-------+---------+--------+
+| stu_id | name  | city    | pin    |
++--------+-------+---------+--------+
+|      2 | Rohan | Delhi   | 623456 |
+|      3 | Anuj  | Ranchi  | 635421 |
+|      4 | Raj   | NULL    | 625314 |
+|      5 | Shiv  | Lucknow | 100100 |
+|      6 | Dev   | Kolkata | 756324 |
++--------+-------+---------+--------+
+5 rows in set (0.00 sec)
+____________________________________________________
+mysql> select stu_id,name from student limit 1,4;
++--------+-------+
+| stu_id | name  |
++--------+-------+
+|      2 | Rohan |
+|      3 | Anuj  |
+|      4 | Raj   |
+|      5 | Shiv  |
++--------+-------+
+4 rows in set (0.00 sec)
