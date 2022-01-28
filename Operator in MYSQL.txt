@@ -25,7 +25,7 @@ Operator	Description
 <		Less than	
 >=		Greater than or equal to	
 <=		Less than or equal to	
-<>		Not equal to	
+<> or !=	Not equal to	
 _________________________________________________________
 MySQL Compound Operators
 -----------------------------------
