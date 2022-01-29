@@ -1,0 +1,17 @@
+mysql> ALTER TABLE emp MODIFY dob Date;
+Query OK, 14 rows affected (1.23 sec)
+Records: 14  Duplicates: 0  Warnings: 0
+____________________________________________
+
+mysql> show warnings;
++---------+------+--------------------------------------------------------+
+| Level   | Code | Message                                                |
++---------+------+--------------------------------------------------------+
+| Warning | 1292 | Incorrect date value: '1994' for column 'dob' at row 1 |
+| Warning | 1292 | Incorrect date value: '1964' for column 'dob' at row 1 |
++---------+------+--------------------------------------------------------+
+2 rows in set (0.10 sec)
+_______________________________________________________________________________
+
+mysql> delete from emp where emp_id=101;
+Query OK, 1 row affected (0.10 sec)

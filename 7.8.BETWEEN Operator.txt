@@ -1,0 +1,116 @@
+BETWEEN Operator
+
+The BETWEEN operator selects values within a range. The values can be numbers, text or dates.
+
+1.BETWEEN Number
+
+Syntax :- SELECT * FROM table_name WHERE column_name BETWEEN value1 AND value2;
+
+Ex :-  SELECT * FROM emp WHERE emp_id BETWEEN 106 AND 108;  # including both 106 and 108
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2.BETWEEN Text
+
+Syntax :- SELECT * FROM table_name WHERE column_name BETWEEN value1 AND value2; 
+
+Ex :-  SELECT * FROM emp WHERE emp_name BETWEEN 'B' AND 'J';  # including B but not J
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2.BETWEEN Date
+
+Syntax :- SELECT * FROM table_name WHERE column_name BETWEEN 'yyyy/mm/dd' AND 'yyyy/mm/dd'; 
+
+Ex :-  SELECT * FROM emp WHERE dob BETWEEN '1999/01/04' AND '1990/02/14';  # including both dates
+
+--------------------------------------------------------------------------------------
+
+mysql> select * from emp;
++--------+----------+------------+------------+--------+----------+--------+------------------+
+| emp_id | emp_name | dob        | dept       | salary | city     | pin    | email            |
++--------+----------+------------+------------+--------+----------+--------+------------------+
+|    101 | Ram      | 1990-01-01 | IT         |  30000 | Delhi    | 800001 | ram@gmail.com    |
+|    102 | Amit     | 1988-04-03 | Research   |  45000 | Mumbai   | 800002 | amit@gmail.com   |
+|    103 | Tanu     | 1990-01-01 | Accountant |  15000 | Delhi    | 800001 | tanu@gmail.com   |
+|    104 | Sunil    | 1989-12-05 | IT         |  30000 | Kolkata  | 800003 | sunil@gmail.com  |
+|    105 | Sonal    | 1989-12-05 | Executive  |  10000 | Kolkata  | 800003 | sonam@gmail.com  |
+|    106 | Komal    | 1992-11-03 | HR         |  35000 | Ranchi   | 800004 | komal@gmail.com  |
+|    107 | Vinay    | 1990-10-06 | HR         |  35000 | Kolkata  | 800003 | vinay@gmail.com  |
+|    108 | Dev      | 1989-09-25 | IT         |  30000 | Mumbai   | 800002 | dev@gmail.com    |
+|    109 | Suhana   | 1990-07-15 | IT         |  30000 | Ranchi   | 800004 | suhana@gmail.com |
+|    110 | Pooja    | 1988-01-26 | HR         |  35000 | Banglore | 800005 | pooja@gmail.com  |
+|    111 | Raja     | 1992-11-03 | Accountant |  15000 | Patna    | 800007 | raja@gmail.com   |
+|    112 | Jai      | 1990-01-18 | Trainer    |  20000 | Chennai  | 800009 | jai@gmail.com    |
+|    113 | Sonal    | 1990-01-18 | Trainer    |  20000 | J&K      | 800010 | sonal@gmail.com  |
+|    114 | Dev      | 1989-09-25 | IT         |  30000 | Chennai  | 800009 | devit@gmail.com  |
++--------+----------+------------+------------+--------+----------+--------+------------------+
+14 rows in set (0.00 sec)
+___________________________________________________________________________________________________
+mysql> SELECT * FROM emp WHERE emp_id BETWEEN 106 AND 108;
++--------+----------+------------+------+--------+---------+--------+-----------------+
+| emp_id | emp_name | dob        | dept | salary | city    | pin    | email           |
++--------+----------+------------+------+--------+---------+--------+-----------------+
+|    106 | Komal    | 1992-11-03 | HR   |  35000 | Ranchi  | 800004 | komal@gmail.com |
+|    107 | Vinay    | 1990-10-06 | HR   |  35000 | Kolkata | 800003 | vinay@gmail.com |
+|    108 | Dev      | 1989-09-25 | IT   |  30000 | Mumbai  | 800002 | dev@gmail.com   |
++--------+----------+------------+------+--------+---------+--------+-----------------+
+3 rows in set (0.00 sec)
+_____________________________________________________________________________________________________
+mysql> SELECT emp_name,dept,city FROM emp WHERE emp_id BETWEEN 106 AND 108;
++----------+------+---------+
+| emp_name | dept | city    |
++----------+------+---------+
+| Komal    | HR   | Ranchi  |
+| Vinay    | HR   | Kolkata |
+| Dev      | IT   | Mumbai  |
++----------+------+---------+
+3 rows in set (0.00 sec)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+mysql> SELECT * FROM emp WHERE emp_name BETWEEN 'B' AND 'J';
++--------+----------+------------+------+--------+---------+--------+-----------------+
+| emp_id | emp_name | dob        | dept | salary | city    | pin    | email           |
++--------+----------+------------+------+--------+---------+--------+-----------------+
+|    108 | Dev      | 1989-09-25 | IT   |  30000 | Mumbai  | 800002 | dev@gmail.com   |
+|    114 | Dev      | 1989-09-25 | IT   |  30000 | Chennai | 800009 | devit@gmail.com |
++--------+----------+------------+------+--------+---------+--------+-----------------+
+2 rows in set (0.00 sec)
+_________________________________________________________________________________________________
+mysql> SELECT * FROM emp WHERE emp_name BETWEEN 'B' AND 's';
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+| emp_id | emp_name | dob        | dept       | salary | city     | pin    | email           |
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+|    101 | Ram      | 1990-01-01 | IT         |  30000 | Delhi    | 800001 | ram@gmail.com   |
+|    106 | Komal    | 1992-11-03 | HR         |  35000 | Ranchi   | 800004 | komal@gmail.com |
+|    108 | Dev      | 1989-09-25 | IT         |  30000 | Mumbai   | 800002 | dev@gmail.com   |
+|    110 | Pooja    | 1988-01-26 | HR         |  35000 | Banglore | 800005 | pooja@gmail.com |
+|    111 | Raja     | 1992-11-03 | Accountant |  15000 | Patna    | 800007 | raja@gmail.com  |
+|    112 | Jai      | 1990-01-18 | Trainer    |  20000 | Chennai  | 800009 | jai@gmail.com   |
+|    114 | Dev      | 1989-09-25 | IT         |  30000 | Chennai  | 800009 | devit@gmail.com |
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+7 rows in set (0.00 sec)
+_________________________________________________________________________________________________
+mysql> SELECT * FROM emp WHERE city BETWEEN 'B' AND 'j';
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+| emp_id | emp_name | dob        | dept       | salary | city     | pin    | email           |
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+|    101 | Ram      | 1990-01-01 | IT         |  30000 | Delhi    | 800001 | ram@gmail.com   |
+|    103 | Tanu     | 1990-01-01 | Accountant |  15000 | Delhi    | 800001 | tanu@gmail.com  |
+|    110 | Pooja    | 1988-01-26 | HR         |  35000 | Banglore | 800005 | pooja@gmail.com |
+|    112 | Jai      | 1990-01-18 | Trainer    |  20000 | Chennai  | 800009 | jai@gmail.com   |
+|    114 | Dev      | 1989-09-25 | IT         |  30000 | Chennai  | 800009 | devit@gmail.com |
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+5 rows in set (0.00 sec)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+mysql> select * from emp where dob between '1990-01-01' and '1992-11-03';
++--------+----------+------------+------------+--------+---------+--------+------------------+
+| emp_id | emp_name | dob        | dept       | salary | city    | pin    | email            |
++--------+----------+------------+------------+--------+---------+--------+------------------+
+|    101 | Ram      | 1990-01-01 | IT         |  30000 | Delhi   | 800001 | ram@gmail.com    |
+|    103 | Tanu     | 1990-01-01 | Accountant |  15000 | Delhi   | 800001 | tanu@gmail.com   |
+|    106 | Komal    | 1992-11-03 | HR         |  35000 | Ranchi  | 800004 | komal@gmail.com  |
+|    107 | Vinay    | 1990-10-06 | HR         |  35000 | Kolkata | 800003 | vinay@gmail.com  |
+|    109 | Suhana   | 1990-07-15 | IT         |  30000 | Ranchi  | 800004 | suhana@gmail.com |
+|    111 | Raja     | 1992-11-03 | Accountant |  15000 | Patna   | 800007 | raja@gmail.com   |
+|    112 | Jai      | 1990-01-18 | Trainer    |  20000 | Chennai | 800009 | jai@gmail.com    |
+|    113 | Sonal    | 1990-01-18 | Trainer    |  20000 | J&K     | 800010 | sonal@gmail.com  |
++--------+----------+------------+------------+--------+---------+--------+------------------+
+8 rows in set (0.00 sec)

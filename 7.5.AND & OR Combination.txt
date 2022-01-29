@@ -1,0 +1,84 @@
+AND & OR Combination
+
+Syntax :- SELECT * FROM table_name WHERE column_name = 'value' AND (column_name = 'value' OR column_name1 = 'value');
+
+Ex :- SELECT * FROM student WHERE name = 'Raj' AND (stu_id = 4 OR city = 'Ranchi');
+--------------------------------------------------------------------------------------
+
+mysql> SELECT * FROM student WHERE name = 'Raj' AND (stu_id = 4 OR city = 'Ranchi');
++--------+------+--------+--------+
+| stu_id | name | city   | pin    |
++--------+------+--------+--------+
+|      1 | Raj  | Ranchi | 123456 |
+|      4 | Raj  | NULL   | 625314 |
++--------+------+--------+--------+
+2 rows in set (0.00 sec)
+______________________________________________________________________________________
+mysql> SELECT * FROM student WHERE name = 'Raj' AND (stu_id = 6 OR city = 'Ranchi');
++--------+------+--------+--------+
+| stu_id | name | city   | pin    |
++--------+------+--------+--------+
+|      1 | Raj  | Ranchi | 123456 |
++--------+------+--------+--------+
+1 row in set (0.00 sec)
+____________________________________________________________________________________
+mysql> SELECT * FROM student WHERE name = 'Raj' AND (stu_id = 4 OR city is null);
++--------+------+------+--------+
+| stu_id | name | city | pin    |
++--------+------+------+--------+
+|      4 | Raj  | NULL | 625314 |
++--------+------+------+--------+
+1 row in set (0.02 sec)
+____________________________________________________________________________________
+mysql> SELECT * FROM student WHERE name = 'Raj' AND (stu_id = 1 OR city is null);
++--------+------+--------+--------+
+| stu_id | name | city   | pin    |
++--------+------+--------+--------+
+|      1 | Raj  | Ranchi | 123456 |
+|      4 | Raj  | NULL   | 625314 |
++--------+------+--------+--------+
+2 rows in set (0.00 sec)
+____________________________________________________________________________________
+mysql> SELECT * FROM student WHERE name = 'Raj' OR (stu_id = 1 AND city is null);
++--------+------+--------+--------+
+| stu_id | name | city   | pin    |
++--------+------+--------+--------+
+|      1 | Raj  | Ranchi | 123456 |
+|      4 | Raj  | NULL   | 625314 |
++--------+------+--------+--------+
+2 rows in set (0.00 sec)
+____________________________________________________________________________________
+mysql> SELECT * FROM student WHERE name = 'Raj' OR (stu_id = 4 AND city is null);
++--------+------+--------+--------+
+| stu_id | name | city   | pin    |
++--------+------+--------+--------+
+|      1 | Raj  | Ranchi | 123456 |
+|      4 | Raj  | NULL   | 625314 |
++--------+------+--------+--------+
+2 rows in set (0.00 sec)
+____________________________________________________________________________________
+mysql> SELECT * FROM student WHERE name = 'Raj' OR (stu_id = 4 AND city is null);
++--------+------+--------+--------+
+| stu_id | name | city   | pin    |
++--------+------+--------+--------+
+|      1 | Raj  | Ranchi | 123456 |
+|      4 | Raj  | NULL   | 625314 |
++--------+------+--------+--------+
+2 rows in set (0.00 sec)
+_______________________________________________________________________________________
+mysql> SELECT * FROM student WHERE name = 'Shiv' OR (stu_id = 4 AND city is null);
++--------+------+---------+--------+
+| stu_id | name | city    | pin    |
++--------+------+---------+--------+
+|      4 | Raj  | NULL    | 625314 |
+|      5 | Shiv | Lucknow | 100100 |
++--------+------+---------+--------+
+2 rows in set (0.00 sec)
+______________________________________________________________________________________
+mysql> SELECT * FROM student WHERE name = 'Shiv' OR (stu_id = 6 AND city is null);
++--------+------+---------+--------+
+| stu_id | name | city    | pin    |
++--------+------+---------+--------+
+|      5 | Shiv | Lucknow | 100100 |
++--------+------+---------+--------+
+1 row in set (0.00 sec)
