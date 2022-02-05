@@ -1,0 +1,203 @@
+***LIKE***
+
+The like operator is used to search for a specified pattern in a column.
+
+Syntax:- SELECT * FROM table_name WHERE column_name LIKE 'pattern';
+
+Ex:- SELECT * FROM emp WHERE emp_name LIKE '%nu';
+
+-------------------------------------------------------------------------------------------
+***WILDCARDS only using with LIKE and NOT LIKE***
+
+Wildcards are used to search for data within a table. These characters are used with the 
+LIKE operator.
++------------+--------------------------------------------------------------+
+|  WILDCARD  |                          DESCRIPTION                         |
++------------+--------------------------------------------------------------+
+|     %      | Zero or more characters                                      |
++------------+--------------------------------------------------------------+
+|     _      | One single character                                         |
++------------+--------------------------------------------------------------+
+
+
+1. % - Zero or more characters
+    
+   'galax%' - All starting with galax. Ex: galaxeeranger
+   '%ranger' - All ending with ranger. Ex: galaxeeranger
+   '%ee% - All containing with ee. Ex: galaxeeranger
+
+2. _ - One single character
+   
+   'galax_' - Starting with galax then any character. Ex: galaxee
+   '_ger' - any character then ger. Ex: ranger
+   'g_la_ee' - g then any character, then a then any character, then ee. Ex:galaxee
+----------------------------------------------------------------------------------------------
+***NOT LIKE***
+
+Syntax:- SELECT * FROM table_name WHERE column_name NOT LIKE 'pattern';
+
+Ex:- SELECT * FROM emp WHERE emp_name NOT LIKE '%nu';
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Microsoft Windows [Version 10.0.19044.1503]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Shivm>cd mysql/bin
+
+C:\Users\Shivm\mysql\bin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+----------------------------------------------------------------------------------
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| my_db              |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.22 sec)
+_________________________
+mysql> use my_db;
+Database changed
+_________________________
+mysql> show tables;
++-----------------+
+| Tables_in_my_db |
++-----------------+
+| emp             |
+| emp_info        |
+| my_tab          |
+| new_tab         |
+| student         |
++-----------------+
+5 rows in set (0.04 sec)
+______________________________________________________________________________________________________
+mysql> select * from emp;
++--------+----------+------------+------------+--------+----------+--------+------------------+
+| emp_id | emp_name | dob        | dept       | salary | city     | pin    | email            |
++--------+----------+------------+------------+--------+----------+--------+------------------+
+|    101 | Ram      | 1990-01-01 | IT         |  30000 | Delhi    | 800001 | ram@gmail.com    |
+|    102 | Amit     | 1988-04-03 | Research   |  45000 | Mumbai   | 800002 | amit@gmail.com   |
+|    103 | Tanu     | 1990-01-01 | Accountant |  15000 | Delhi    | 800001 | tanu@gmail.com   |
+|    104 | Sunil    | 1989-12-05 | IT         |  30000 | Kolkata  | 800003 | sunil@gmail.com  |
+|    105 | Sonal    | 1989-12-05 | Executive  |  10000 | Kolkata  | 800003 | sonam@gmail.com  |
+|    106 | Komal    | 1992-11-03 | HR         |  35000 | Ranchi   | 800004 | komal@gmail.com  |
+|    107 | Vinay    | 1990-10-06 | HR         |  35000 | Kolkata  | 800003 | vinay@gmail.com  |
+|    108 | Dev      | 1989-09-25 | IT         |  30000 | Mumbai   | 800002 | dev@gmail.com    |
+|    109 | Suhana   | 1990-07-15 | IT         |  30000 | Ranchi   | 800004 | suhana@gmail.com |
+|    110 | Pooja    | 1988-01-26 | HR         |  35000 | Banglore | 800005 | pooja@gmail.com  |
+|    111 | Raja     | 1992-11-03 | Accountant |  15000 | Patna    | 800007 | raja@gmail.com   |
+|    112 | Jai      | 1990-01-18 | Trainer    |  20000 | Chennai  | 800009 | jai@gmail.com    |
+|    113 | Sonal    | 1990-01-18 | Trainer    |  20000 | J&K      | 800010 | sonal@gmail.com  |
+|    114 | Dev      | 1989-09-25 | IT         |  30000 | Chennai  | 800009 | devit@gmail.com  |
++--------+----------+------------+------------+--------+----------+--------+------------------+
+14 rows in set (0.00 sec)
+____________________________________________________________________________________________________
+mysql> select * from emp where emp_name like 'su%';
++--------+----------+------------+------+--------+---------+--------+------------------+
+| emp_id | emp_name | dob        | dept | salary | city    | pin    | email            |
++--------+----------+------------+------+--------+---------+--------+------------------+
+|    104 | Sunil    | 1989-12-05 | IT   |  30000 | Kolkata | 800003 | sunil@gmail.com  |
+|    109 | Suhana   | 1990-07-15 | IT   |  30000 | Ranchi  | 800004 | suhana@gmail.com |
++--------+----------+------------+------+--------+---------+--------+------------------+
+2 rows in set (0.01 sec)
+____________________________________________________________________________________________________
+mysql>  select * from emp where emp_name like '%ja';
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+| emp_id | emp_name | dob        | dept       | salary | city     | pin    | email           |
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+|    110 | Pooja    | 1988-01-26 | HR         |  35000 | Banglore | 800005 | pooja@gmail.com |
+|    111 | Raja     | 1992-11-03 | Accountant |  15000 | Patna    | 800007 | raja@gmail.com  |
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+2 rows in set (0.00 sec)
+_____________________________________________________________________________________________________
+mysql>  select * from emp where city like '%l%';
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+| emp_id | emp_name | dob        | dept       | salary | city     | pin    | email           |
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+|    101 | Ram      | 1990-01-01 | IT         |  30000 | Delhi    | 800001 | ram@gmail.com   |
+|    103 | Tanu     | 1990-01-01 | Accountant |  15000 | Delhi    | 800001 | tanu@gmail.com  |
+|    104 | Sunil    | 1989-12-05 | IT         |  30000 | Kolkata  | 800003 | sunil@gmail.com |
+|    105 | Sonal    | 1989-12-05 | Executive  |  10000 | Kolkata  | 800003 | sonam@gmail.com |
+|    107 | Vinay    | 1990-10-06 | HR         |  35000 | Kolkata  | 800003 | vinay@gmail.com |
+|    110 | Pooja    | 1988-01-26 | HR         |  35000 | Banglore | 800005 | pooja@gmail.com |
++--------+----------+------------+------------+--------+----------+--------+-----------------+
+6 rows in set (0.00 sec)
+________________________________________________________________________________________________________
+mysql>  select * from emp where emp_name like '_am';
++--------+----------+------------+------+--------+-------+--------+---------------+
+| emp_id | emp_name | dob        | dept | salary | city  | pin    | email         |
++--------+----------+------------+------+--------+-------+--------+---------------+
+|    101 | Ram      | 1990-01-01 | IT   |  30000 | Delhi | 800001 | ram@gmail.com |
++--------+----------+------------+------+--------+-------+--------+---------------+
+1 row in set (0.00 sec)
+_______________________________________________________________________________________________________
+mysql>  select * from emp where emp_name like 'raj_';
++--------+----------+------------+------------+--------+-------+--------+----------------+
+| emp_id | emp_name | dob        | dept       | salary | city  | pin    | email          |
++--------+----------+------------+------------+--------+-------+--------+----------------+
+|    111 | Raja     | 1992-11-03 | Accountant |  15000 | Patna | 800007 | raja@gmail.com |
++--------+----------+------------+------------+--------+-------+--------+----------------+
+1 row in set (0.00 sec)
+_______________________________________________________________________________________________________
+mysql>  select * from emp where emp_name like 'r_j_';
++--------+----------+------------+------------+--------+-------+--------+----------------+
+| emp_id | emp_name | dob        | dept       | salary | city  | pin    | email          |
++--------+----------+------------+------------+--------+-------+--------+----------------+
+|    111 | Raja     | 1992-11-03 | Accountant |  15000 | Patna | 800007 | raja@gmail.com |
++--------+----------+------------+------------+--------+-------+--------+----------------+
+1 row in set (0.00 sec)
+______________________________________________________________________________________________________
+mysql>  select * from emp;
++--------+----------+------------+------------+--------+----------+--------+------------------+
+| emp_id | emp_name | dob        | dept       | salary | city     | pin    | email            |
++--------+----------+------------+------------+--------+----------+--------+------------------+
+|    101 | Ram      | 1990-01-01 | IT         |  30000 | Delhi    | 800001 | ram@gmail.com    |
+|    102 | Amit     | 1988-04-03 | Research   |  45000 | Mumbai   | 800002 | amit@gmail.com   |
+|    103 | Tanu     | 1990-01-01 | Accountant |  15000 | Delhi    | 800001 | tanu@gmail.com   |
+|    104 | Sunil    | 1989-12-05 | IT         |  30000 | Kolkata  | 800003 | sunil@gmail.com  |
+|    105 | Sonal    | 1989-12-05 | Executive  |  10000 | Kolkata  | 800003 | sonam@gmail.com  |
+|    106 | Komal    | 1992-11-03 | HR         |  35000 | Ranchi   | 800004 | komal@gmail.com  |
+|    107 | Vinay    | 1990-10-06 | HR         |  35000 | Kolkata  | 800003 | vinay@gmail.com  |
+|    108 | Dev      | 1989-09-25 | IT         |  30000 | Mumbai   | 800002 | dev@gmail.com    |
+|    109 | Suhana   | 1990-07-15 | IT         |  30000 | Ranchi   | 800004 | suhana@gmail.com |
+|    110 | Pooja    | 1988-01-26 | HR         |  35000 | Banglore | 800005 | pooja@gmail.com  |
+|    111 | Raja     | 1992-11-03 | Accountant |  15000 | Patna    | 800007 | raja@gmail.com   |
+|    112 | Jai      | 1990-01-18 | Trainer    |  20000 | Chennai  | 800009 | jai@gmail.com    |
+|    113 | Sonal    | 1990-01-18 | Trainer    |  20000 | J&K      | 800010 | sonal@gmail.com  |
+|    114 | Dev      | 1989-09-25 | IT         |  30000 | Chennai  | 800009 | devit@gmail.com  |
++--------+----------+------------+------------+--------+----------+--------+------------------+
+14 rows in set (0.00 sec)
+_____________________________________________________________________________________________________
+mysql>  select * from emp where emp_name not like '%nu';
++--------+----------+------------+------------+--------+----------+--------+------------------+
+| emp_id | emp_name | dob        | dept       | salary | city     | pin    | email            |
++--------+----------+------------+------------+--------+----------+--------+------------------+
+|    101 | Ram      | 1990-01-01 | IT         |  30000 | Delhi    | 800001 | ram@gmail.com    |
+|    102 | Amit     | 1988-04-03 | Research   |  45000 | Mumbai   | 800002 | amit@gmail.com   |
+|    104 | Sunil    | 1989-12-05 | IT         |  30000 | Kolkata  | 800003 | sunil@gmail.com  |
+|    105 | Sonal    | 1989-12-05 | Executive  |  10000 | Kolkata  | 800003 | sonam@gmail.com  |
+|    106 | Komal    | 1992-11-03 | HR         |  35000 | Ranchi   | 800004 | komal@gmail.com  |
+|    107 | Vinay    | 1990-10-06 | HR         |  35000 | Kolkata  | 800003 | vinay@gmail.com  |
+|    108 | Dev      | 1989-09-25 | IT         |  30000 | Mumbai   | 800002 | dev@gmail.com    |
+|    109 | Suhana   | 1990-07-15 | IT         |  30000 | Ranchi   | 800004 | suhana@gmail.com |
+|    110 | Pooja    | 1988-01-26 | HR         |  35000 | Banglore | 800005 | pooja@gmail.com  |
+|    111 | Raja     | 1992-11-03 | Accountant |  15000 | Patna    | 800007 | raja@gmail.com   |
+|    112 | Jai      | 1990-01-18 | Trainer    |  20000 | Chennai  | 800009 | jai@gmail.com    |
+|    113 | Sonal    | 1990-01-18 | Trainer    |  20000 | J&K      | 800010 | sonal@gmail.com  |
+|    114 | Dev      | 1989-09-25 | IT         |  30000 | Chennai  | 800009 | devit@gmail.com  |
++--------+----------+------------+------------+--------+----------+--------+------------------+
+13 rows in set (0.02 sec)
