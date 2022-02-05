@@ -1,0 +1,217 @@
+WHERE clause with Arithmatic and Comparison Operator
+
+WHERE is used to search for a specific data.
+
+Syntax :-
+
+1.Specific data from all column
+Syntax :- SELECT * FROM table_name WHERE column_name operator 'value';
+
+Ex:- SELECT * FROM student WHERE name = 'Raj';
+
+Ex :- SELECT * FROM student WHERE stu_id = 4;
+
+2.Specific data from specific column
+Syntax :- SELECT column_name FROM table_name WHERE column_name operator 'value';
+
+Ex :- SELECT name FROM student WHERE name = 'Raj';
+
+Ex :- SELECT name FROM student WHERE stu_id = 4;
+
+Note: Value can be text or numeric. If it is text then we have to put Single/Double quotes.
+-----------------------------------------------------------------------------------------------
+Microsoft Windows [Version 10.0.19044.1503]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Shivm>cd mysql/bin
+
+C:\Users\Shivm\mysql\bin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+----------------------------------------------------------------------------------------------------
+mysql> use my_db;
+Database changed
+____________________________
+mysql> show tables;
++-----------------+
+| Tables_in_my_db |
++-----------------+
+| my_tab          |
+| new_tab         |
+| student         |
++-----------------+
+3 rows in set (0.04 sec)
+_______________________________________________
+mysql> select * from student;
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      1 | Raj           | Ranchi  | 123456 |
+|      2 | Rohan         | Delhi   | 623456 |
+|      3 | Anuj          | Ranchi  | 635421 |
+|      4 | Raj           | NULL    | 625314 |
+|      5 | Shiv          | Lucknow | 100100 |
+|      6 | Dev           | Kolkata | 756324 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      9 | K.K's Company | Mumbai  | 110114 |
++--------+---------------+---------+--------+
+9 rows in set (0.00 sec)
+____________________________________________________
+mysql> SELECT * FROM student WHERE name = 'Raj';
++--------+------+--------+--------+
+| stu_id | name | city   | pin    |
++--------+------+--------+--------+
+|      1 | Raj  | Ranchi | 123456 |
+|      4 | Raj  | NULL   | 625314 |
++--------+------+--------+--------+
+2 rows in set (0.09 sec)
+____________________________________________________
+mysql> SELECT * FROM student WHERE stu_id = 4;
++--------+------+------+--------+
+| stu_id | name | city | pin    |
++--------+------+------+--------+
+|      4 | Raj  | NULL | 625314 |
++--------+------+------+--------+
+1 row in set (0.00 sec)
+______________________________________________________
+mysql> SELECT name FROM student WHERE name = 'Raj';
++------+
+| name |
++------+
+| Raj  |
+| Raj  |
++------+
+2 rows in set (0.00 sec)
+____________________________________________________
+mysql> SELECT name FROM student WHERE stu_id = 4;
++------+
+| name |
++------+
+| Raj  |
++------+
+1 row in set (0.00 sec)
+_____________________________________________________________
+mysql> SELECT * FROM student WHERE city = 'Ranchi';
++--------+------+--------+--------+
+| stu_id | name | city   | pin    |
++--------+------+--------+--------+
+|      1 | Raj  | Ranchi | 123456 |
+|      3 | Anuj | Ranchi | 635421 |
++--------+------+--------+--------+
+2 rows in set (0.00 sec)
+_______________________________________________________________
+mysql> SELECT * FROM student WHERE city != 'Ranchi';
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      2 | Rohan         | Delhi   | 623456 |
+|      5 | Shiv          | Lucknow | 100100 |
+|      6 | Dev           | Kolkata | 756324 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      9 | K.K's Company | Mumbai  | 110114 |
++--------+---------------+---------+--------+
+6 rows in set (0.00 sec)
+____________________________________________________________
+mysql> SELECT * FROM student WHERE stu_id > 4;
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      5 | Shiv          | Lucknow | 100100 |
+|      6 | Dev           | Kolkata | 756324 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      9 | K.K's Company | Mumbai  | 110114 |
++--------+---------------+---------+--------+
+5 rows in set (0.08 sec)
+__________________________________________________________
+mysql> SELECT * FROM student WHERE stu_id < 4;
++--------+-------+--------+--------+
+| stu_id | name  | city   | pin    |
++--------+-------+--------+--------+
+|      1 | Raj   | Ranchi | 123456 |
+|      2 | Rohan | Delhi  | 623456 |
+|      3 | Anuj  | Ranchi | 635421 |
++--------+-------+--------+--------+
+3 rows in set (0.00 sec)
+____________________________________________________________
+mysql> SELECT * FROM student WHERE stu_id >= 4;
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      4 | Raj           | NULL    | 625314 |
+|      5 | Shiv          | Lucknow | 100100 |
+|      6 | Dev           | Kolkata | 756324 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      9 | K.K's Company | Mumbai  | 110114 |
++--------+---------------+---------+--------+
+6 rows in set (0.00 sec)
+___________________________________________________________
+mysql> SELECT * FROM student WHERE stu_id <= 4;
++--------+-------+--------+--------+
+| stu_id | name  | city   | pin    |
++--------+-------+--------+--------+
+|      1 | Raj   | Ranchi | 123456 |
+|      2 | Rohan | Delhi  | 623456 |
+|      3 | Anuj  | Ranchi | 635421 |
+|      4 | Raj   | NULL   | 625314 |
++--------+-------+--------+--------+
+4 rows in set (0.16 sec)
+___________________________________________________________
+mysql> SELECT * FROM student WHERE name <= 'j';
++--------+------+---------+--------+
+| stu_id | name | city    | pin    |
++--------+------+---------+--------+
+|      3 | Anuj | Ranchi  | 635421 |
+|      6 | Dev  | Kolkata | 756324 |
++--------+------+---------+--------+
+2 rows in set (0.00 sec)
+___________________________________________________________
+mysql> SELECT * FROM student WHERE name > 'j';
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      1 | Raj           | Ranchi  | 123456 |
+|      2 | Rohan         | Delhi   | 623456 |
+|      4 | Raj           | NULL    | 625314 |
+|      5 | Shiv          | Lucknow | 100100 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      9 | K.K's Company | Mumbai  | 110114 |
++--------+---------------+---------+--------+
+7 rows in set (0.00 sec)
+____________________________________________________________
+mysql> SELECT * FROM student WHERE name > 'k';
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      1 | Raj           | Ranchi  | 123456 |
+|      2 | Rohan         | Delhi   | 623456 |
+|      4 | Raj           | NULL    | 625314 |
+|      5 | Shiv          | Lucknow | 100100 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      9 | K.K's Company | Mumbai  | 110114 |
++--------+---------------+---------+--------+
+7 rows in set (0.00 sec)
+_____________________________________________________________
+mysql> SELECT * FROM student WHERE name < 'k';
++--------+------+---------+--------+
+| stu_id | name | city    | pin    |
++--------+------+---------+--------+
+|      3 | Anuj | Ranchi  | 635421 |
+|      6 | Dev  | Kolkata | 756324 |
++--------+------+---------+--------+
+2 rows in set (0.00 sec)
