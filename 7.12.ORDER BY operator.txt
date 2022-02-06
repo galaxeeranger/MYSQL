@@ -1,0 +1,128 @@
+ORDER BY
+
+This is used to sort the records
+
+ASC - It sorts in ascending order (by default)
+DESC - It sorts in descending order.
+
+1. Sort in descending order
+Syntax :- SELECT * FROM table_name ORDER BY column_name DESC;
+Ex :- SELECT * FROM student ORDER BY name DESC;
+------------------------------------------------------------------
+2. Sort in ascending order
+Syntax :- SELECT * FROM table_name ORDER BY column_name ASC;
+Ex :- SELECT * FROM student ORDER BY name ASC; 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Microsoft Windows [Version 10.0.19044.1503]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Shivm>cd mysql/bin
+C:\Users\Shivm\mysql\bin>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+----------------------------------------------------------------------------------
+mysql> use my_db;
+Database changed
+_______________________________
+mysql> show tables;
++-----------------+
+| Tables_in_my_db |
++-----------------+
+| emp             |
+| emp_info        |
+| my_tab          |
+| new_tab         |
+| student         |
++-----------------+
+5 rows in set (0.34 sec)
+___________________________________________________
+mysql> select * from student;
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      1 | Raj           | Ranchi  | 123456 |
+|      2 | Rohan         | Delhi   | 623456 |
+|      3 | Anuj          | Ranchi  | 635421 |
+|      4 | Raj           | NULL    | 625314 |
+|      5 | Shiv          | Lucknow | 100100 |
+|      6 | Dev           | Kolkata | 756324 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      9 | K.K's Company | Mumbai  | 110114 |
++--------+---------------+---------+--------+
+9 rows in set (0.00 sec)
+__________________________________________________
+mysql> select * from student order by name desc;
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      5 | Shiv          | Lucknow | 100100 |
+|      2 | Rohan         | Delhi   | 623456 |
+|      1 | Raj           | Ranchi  | 123456 |
+|      4 | Raj           | NULL    | 625314 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      9 | K.K's Company | Mumbai  | 110114 |
+|      6 | Dev           | Kolkata | 756324 |
+|      3 | Anuj          | Ranchi  | 635421 |
++--------+---------------+---------+--------+
+9 rows in set (0.01 sec)
+___________________________________________________
+mysql> select * from student order by stu_id desc;
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      9 | K.K's Company | Mumbai  | 110114 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      6 | Dev           | Kolkata | 756324 |
+|      5 | Shiv          | Lucknow | 100100 |
+|      4 | Raj           | NULL    | 625314 |
+|      3 | Anuj          | Ranchi  | 635421 |
+|      2 | Rohan         | Delhi   | 623456 |
+|      1 | Raj           | Ranchi  | 123456 |
++--------+---------------+---------+--------+
+9 rows in set (0.00 sec)
+__________________________________________________
+mysql> select * from student order by name asc;
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      3 | Anuj          | Ranchi  | 635421 |
+|      6 | Dev           | Kolkata | 756324 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      9 | K.K's Company | Mumbai  | 110114 |
+|      1 | Raj           | Ranchi  | 123456 |
+|      4 | Raj           | NULL    | 625314 |
+|      2 | Rohan         | Delhi   | 623456 |
+|      5 | Shiv          | Lucknow | 100100 |
++--------+---------------+---------+--------+
+9 rows in set (0.00 sec)
+____________________________________________________
+mysql> select * from student order by stu_id asc;
++--------+---------------+---------+--------+
+| stu_id | name          | city    | pin    |
++--------+---------------+---------+--------+
+|      1 | Raj           | Ranchi  | 123456 |
+|      2 | Rohan         | Delhi   | 623456 |
+|      3 | Anuj          | Ranchi  | 635421 |
+|      4 | Raj           | NULL    | 625314 |
+|      5 | Shiv          | Lucknow | 100100 |
+|      6 | Dev           | Kolkata | 756324 |
+|      7 | K.K's Company | Delhi   | 632541 |
+|      8 | K.K's Company | GOA     | 632458 |
+|      9 | K.K's Company | Mumbai  | 110114 |
++--------+---------------+---------+--------+
+9 rows in set (0.00 sec)
