@@ -1,0 +1,52 @@
+NOT NULL constrain
+
+By default, a table's column can hold NULL values.
+The NOT NULL constraint enforces a field to always contain a value. This means that you 
+cannot insert a new record, or update a record without adding a value to this field.
+
+Ex :- CREATE TABLE student( Name varchar(30), Roll int, Mobile_no int NOT NULL);
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+mysql> use my_db;
+Database changed
+__________________________________________________________________________________
+mysql> CREATE TABLE n_tab(id int NOT NULL, name varchar(30), city varchar(50));
+Query OK, 0 rows affected (2.07 sec)
+__________________________________________________________
+mysql> desc n_tab;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   |     | NULL    |       |
+| name  | varchar(30) | YES  |     | NULL    |       |
+| city  | varchar(50) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.14 sec)
+____________________________________________________________
+mysql> INSERT INTO n_tab(id, name, city)
+    -> values (1,'Sumit', 'Patna');
+Query OK, 1 row affected (0.09 sec)
+______________________________________________________________
+mysql> select * from n_tab;
++----+-------+-------+
+| id | name  | city  |
++----+-------+-------+
+|  1 | Sumit | Patna |
++----+-------+-------+
+1 row in set (0.00 sec)
+____________________________________________________________________
+mysql> INSERT INTO n_tab(id, name, city)
+    -> values ('Ramesh', 'Ranchi');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+________________________________________________________________________
+mysql> INSERT INTO n_tab(name, city)
+    -> values ('Ramesh', 'Ranchi');
+ERROR 1364 (HY000): Field 'id' doesn't have a default value
+_________________________________________________________________________
+mysql> select * from n_tab;
++----+-------+-------+
+| id | name  | city  |
++----+-------+-------+
+|  1 | Sumit | Patna |
++----+-------+-------+
+1 row in set (0.00 sec)
