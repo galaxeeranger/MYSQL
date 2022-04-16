@@ -1,5 +1,5 @@
 ____________________________________________________________________________________
-*** DESCRIPTION ***
+*** WINDOWS INSTALLATION ***
 --------------------
 To install Mysql zip file in WINDOWS
 
